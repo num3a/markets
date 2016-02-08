@@ -1,0 +1,47 @@
+
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>SG Markets</ion-title>
+</ion-navbar>
+
+
+<ion-content padding class="getting-started">
+<ion-refresher (starting)="doStarting()" (refresh)="doRefresh($event, refresher)" (pulling)="doPulling($event, amt)">
+  <ion-spinner icon="spiral"></ion-spinner>
+</ion-refresher>
+    <ion-card *ngFor="#item of items" >
+
+  <ion-item >
+    <ion-avatar item-left>
+      <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=avatar&w=150&h=150">
+    </ion-avatar>
+  <h2>FX Strategy Specials</h2>
+    <p><span>Albert Edwards</span></p>
+  </ion-item>
+
+  <img src="http://placeholdit.imgix.net/~text?txtsize=33&txt=publication&w=150&h=150" (click)="showModal($event, item)" >
+
+  <ion-card-content>
+  <p> {{item.title}}</p>
+  </ion-card-content>
+
+  <ion-item>
+    <button primary clear item-left (click)="likePublication($event, item)">
+      <icon thumbs-up></icon>
+      <div>{{item.likeCount}} Likes</div>
+    </button>
+    <button primary clear item-left >
+      <icon class="ion-forward"></icon>
+      <div>Forward</div>
+    </button>
+    
+    <ion-note item-right>
+      11h ago
+    </ion-note>
+  </ion-item>
+
+</ion-card>
+
+</ion-content>
